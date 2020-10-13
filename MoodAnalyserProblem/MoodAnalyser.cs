@@ -2,12 +2,10 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Text.RegularExpressions;
-
 namespace MoodAnalyserProblem
 {
-    public class MoodAnalyser
+    public class MoodAnalyser : Exception
     {
-        string pattern = "^.*Sad.*$";
         string msg;
         public string analyseMood()
         {
@@ -20,16 +18,24 @@ namespace MoodAnalyserProblem
                 return "HAPPY";
             }
         }
-        public string analyseMood(string message)
+        string pattern = "(^.*Sad.*$)|(^.*sad.*$)|(^.*SAD.*$)";
+        public string AnalyseMood(string message)
         {
-            bool match = Regex.IsMatch(message, pattern);
-            if (match)
+            if (message != null)
             {
-                return "SAD";
+                bool match = Regex.IsMatch(message, pattern);
+                if (match)
+                {
+                    return "SAD";
+                }
+                else
+                {
+                    return "HAPPY";
+                }
             }
             else
             {
-                return "HAPPY";
+                return "Value cannot be null";
             }
         }
     }

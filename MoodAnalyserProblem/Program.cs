@@ -1,6 +1,5 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
-
 namespace MoodAnalyserProblem
 {
     class Program
@@ -11,7 +10,7 @@ namespace MoodAnalyserProblem
             MoodAnalyser analyser = new MoodAnalyser();
             Console.WriteLine("your current mood : ");
             string message = Console.ReadLine();
-            string mood = analyser.analyseMood(message);
+            string mood = analyser.AnalyseMood(message);
             Console.WriteLine(mood);
         }
     }

@@ -2,7 +2,7 @@
 using System.ComponentModel.DataAnnotations;
 namespace MoodAnalyserProblem
 {
-    class Program
+    public class Program
     {
         static void Main(string[] args)
         {

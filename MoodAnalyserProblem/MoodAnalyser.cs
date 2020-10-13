@@ -1,30 +1,38 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using System.Text.RegularExpressions;
+
 namespace MoodAnalyserProblem
 {
-    public class MoodAnalyser : Exception
+    public class MoodAnalyzerCustomerException : Exception
     {
-        string msg;
-        public string analyseMood()
+        public enum ExceptionType
         {
-            if (msg == "I am in Sad Mood")
-            {
-                return "SAD";
-            }
-            else
-            {
-                return "HAPPY";
-            }
+            Null_message, Empty_message
         }
-        string pattern = "(^.*Sad.*$)|(^.*sad.*$)|(^.*SAD.*$)";
-        public string AnalyseMood(string message)
+        private readonly ExceptionType type;
+
+
+        public MoodAnalyzerCustomerException(ExceptionType Type, string message) : base(message)
         {
-            if (message != null)
+            this.type = Type;
+        }
+
+        public MoodAnalyzerCustomerException(object message)
+        {
+        }
+
+        public string AnalyseMood()
+        {
+            try
             {
-                bool match = Regex.IsMatch(message, pattern);
-                if (match)
+                if (this.Message.Equals(string.Empty))
+                {
+                    throw new MoodAnalyzerCustomerException(MoodAnalyzerCustomerException.ExceptionType.Empty_message, "mood is empty");
+                }
+
+
+                if (this.Message.Contains("Sad"))
                 {
                     return "SAD";
                 }
@@ -32,11 +40,13 @@ namespace MoodAnalyserProblem
                 {
                     return "HAPPY";
                 }
+
             }
-            else
+            catch (NullReferenceException)
             {
-                return "Value cannot be null";
+                throw new MoodAnalyzerCustomerException(MoodAnalyzerCustomerException.ExceptionType.Null_message, "mood is invalid");
             }
+
         }
     }
 }

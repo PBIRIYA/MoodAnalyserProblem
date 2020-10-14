@@ -4,34 +4,26 @@ using System.Text;
 using System.Text.RegularExpressions;
 namespace MoodAnalyserProblem
 {
-    public class MoodAnalyser : Exception
+    public class MoodAnalyser
     {
-        public string message { get; set; }
-        public MoodAnalyser()
-        {
-        }
+        private string message;
+
+
 
         public MoodAnalyser(string message)
         {
             this.message = message;
         }
-        public string AnalyseMood(string message = null)
+        public string AnalyseMood()
         {
-            var messageCopy = message ?? this.message;
-
-            try
+            if (this.message.Contains("Sad"))
             {
-                messageCopy = messageCopy.ToLower();
-                if (messageCopy == "i am in sad mood")
-                    return "SAD";
-                else
-                    return "HAPPY";
+                return "SAD";
             }
-            catch (NullReferenceException)
+            else
             {
                 return "HAPPY";
             }
-
         }
     }
 }

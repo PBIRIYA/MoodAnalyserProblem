@@ -1,12 +1,16 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
+using MoodAnalyserProblem;
 namespace UnitTestMoodAnalyser
 {
     [TestClass]
     public class MoodAnalyser
     {
-      
-            [TestMethod]
+        public MoodAnalyser(string message)
+        {
+        }
+
+        [TestMethod]
         public void GivenMood_ReturnSad()
         {
             string expected = "SAD";
@@ -16,6 +20,7 @@ namespace UnitTestMoodAnalyser
             Assert.AreEqual(expected, mood);
 
         }
+
         [TestMethod]
         public void GivenMood_ReturnHappy()
         {
@@ -28,18 +33,18 @@ namespace UnitTestMoodAnalyser
 
 
         }
-        [TestClass]
-        public class UnitTest2
+    }
+    [TestClass]
+    public class UnitTest2
+    {
+        [TestMethod]
+        public void GivenNullMood_ReturnHappy()
         {
-            [TestMethod]
-            public void GivenNullMood_ReturnHappy()
-            {
-                string expected = "HAPPY";
-                string message = "HAPPY";
-                MoodAnalyser moodAnalyzer = new MoodAnalyser(message);
-                string mood = moodAnalyzer.CheckMood();
-                Assert.AreEqual(expected, mood);
-            }
-
+            string expected = "HAPPY";
+            string message = "HAPPY";
+            MoodAnalyser moodAnalyzer = new MoodAnalyser(message);
+            string mood = moodAnalyzer.CheckMood();
+            Assert.AreEqual(expected, mood);
         }
+    }
 }

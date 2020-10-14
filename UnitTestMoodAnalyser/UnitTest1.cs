@@ -1,12 +1,16 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using MoodAnalyserProblem;
-
+using System;
 
 namespace UnitTestProject1
 {
     [TestClass]
     public class MoodAnalyser
     {
+        public MoodAnalyser(string message)
+        {
+        }
+
         [TestMethod]
         public void GivenMood_ReturnSad()
         {
@@ -29,6 +33,11 @@ namespace UnitTestProject1
             Assert.AreEqual(expected, mood);
 
 
+        }
+
+        private string AnalyseMood()
+        {
+            throw new NotImplementedException();
         }
     }
     [TestClass]

@@ -7,23 +7,14 @@ namespace MoodAnalyserProblem
 {
     public class MoodAnalyser
     {
-        string pattern = "^.*Sad.*$";
-        string msg;
-        public string analyseMood()
+        private string message;
+        public MoodAnalyser(string message)
         {
-            if (msg == "I am in Sad Mood")
-            {
-                return "SAD";
-            }
-            else
-            {
-                return "HAPPY";
-            }
+            this.message = message;
         }
-        public string analyseMood(string message)
+        public string AnalyseMood()
         {
-            bool match = Regex.IsMatch(message, pattern);
-            if (match)
+            if (this.message.Contains("Sad"))
             {
                 return "SAD";
             }

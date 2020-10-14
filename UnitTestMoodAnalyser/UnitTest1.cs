@@ -6,14 +6,14 @@ namespace UnitTestMoodAnalyser
     public class MoodAnalyser
     {
         [TestMethod]
-        public void Test1Case1()
+        public void GivenMood_ReturnSad()
         {
-            //Arrage
-            MoodAnalyser analyser = new MoodAnalyser();
-            //Act
-            string result1 = analyser.analyseMood("I am in Sad Mood");
-            //Assert
-            Assert.AreEqual("SAD", result1);
+            string expected = "SAD";
+            string message = "I am Sad now";
+            MoodAnalyser moodAnalyser = new MoodAnalyser(message);
+            string mood = moodAnalyser.AnalyseMood();
+            Assert.AreEqual(expected, mood);
+
         }
     }
 }

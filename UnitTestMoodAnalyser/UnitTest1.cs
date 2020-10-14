@@ -1,45 +1,45 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using MoodAnalyserProblem;
 using System;
-
 namespace UnitTestMoodAnalyser
 {
     [TestClass]
-    public class UnitTest
+    public class MoodAnalyser
     {
-        [TestMethod]
-        public void when_pass_I_am_Sad_should_return_Sad()
+      
+            [TestMethod]
+        public void GivenMood_ReturnSad()
         {
-            //Arrage
-            MoodAnalyser analyser = new MoodAnalyser();
-            //Act
-            string result1 = analyser.AnalyseMood("I am in Sad Mood");
-            //Assert
-            Assert.AreEqual("SAD", result1);
+            string expected = "SAD";
+            string message = "I am Sad now";
+            MoodAnalyser moodAnalyser = new MoodAnalyser(message);
+            string mood = moodAnalyser.AnalyseMood();
+            Assert.AreEqual(expected, mood);
+
         }
         [TestMethod]
-        public void when_pass_I_am_Happy_should_return_happy()
+        public void GivenMood_ReturnHappy()
         {
-            //Arrage
-            MoodAnalyser analyser = new MoodAnalyser();
-            //Act
-            string result2 = analyser.AnalyseMood("I am in Any Mood");
-            //Assert
-            Assert.AreEqual("HAPPY", result2);
+
+            string expected = "HAPPY";
+            string message = "I am in any mood";
+            MoodAnalyser moodAnalyser = new MoodAnalyser(message);
+            string mood = moodAnalyser.AnalyseMood();
+            Assert.AreEqual(expected, mood);
+
+
         }
-        [TestMethod]
-        public void Given_NULL_Mood_Should_Throw_NullException()
+        [TestClass]
+        public class UnitTest2
         {
-            try
+            [TestMethod]
+            public void GivenNullMood_ReturnHappy()
             {
-                string msg = null;
-                MoodAnalyser analyser = new MoodAnalyser();
-                string mood = analyser.AnalyseMood(msg);
+                string expected = "HAPPY";
+                string message = "HAPPY";
+                MoodAnalyser moodAnalyzer = new MoodAnalyser(message);
+                string mood = moodAnalyzer.CheckMood();
+                Assert.AreEqual(expected, mood);
             }
-            catch (Exception e)
-            {
-                Assert.AreEqual("Value cannot be null", e.Message);
-            }
+
         }
-    }
 }

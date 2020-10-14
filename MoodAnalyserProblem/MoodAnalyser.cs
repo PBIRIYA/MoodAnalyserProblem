@@ -6,37 +6,32 @@ namespace MoodAnalyserProblem
 {
     public class MoodAnalyser : Exception
     {
-        string msg;
-        public string analyseMood()
+        public string message { get; set; }
+        public MoodAnalyser()
         {
-            if (msg == "I am in Sad Mood")
+        }
+
+        public MoodAnalyser(string message)
+        {
+            this.message = message;
+        }
+        public string AnalyseMood(string message = null)
+        {
+            var messageCopy = message ?? this.message;
+
+            try
             {
-                return "SAD";
+                messageCopy = messageCopy.ToLower();
+                if (messageCopy == "i am in sad mood")
+                    return "SAD";
+                else
+                    return "HAPPY";
             }
-            else
+            catch (NullReferenceException)
             {
                 return "HAPPY";
             }
-        }
-        string pattern = "(^.*Sad.*$)|(^.*sad.*$)|(^.*SAD.*$)";
-        public string AnalyseMood(string message)
-        {
-            if (message != null)
-            {
-                bool match = Regex.IsMatch(message, pattern);
-                if (match)
-                {
-                    return "SAD";
-                }
-                else
-                {
-                    return "HAPPY";
-                }
-            }
-            else
-            {
-                return "Value cannot be null";
-            }
+
         }
     }
 }

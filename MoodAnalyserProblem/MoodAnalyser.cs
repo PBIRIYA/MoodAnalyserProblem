@@ -6,6 +6,7 @@ namespace MoodAnalyserProblem
 {
     public class MoodAnalyzerCustomerException : Exception
     {
+<<<<<<< HEAD
         public enum ExceptionType
         {
             Null_message, Empty_message
@@ -25,6 +26,16 @@ namespace MoodAnalyserProblem
         public string AnalyseMood()
         {
             try
+=======
+        private string message;
+        public MoodAnalyser(string message)
+        {
+            this.message = message;
+        }
+        public string AnalyseMood()
+        {
+            if (this.message.Contains("Sad"))
+>>>>>>> UC1_CreateAbility
             {
                 if (this.Message.Equals(string.Empty))
                 {

@@ -120,7 +120,7 @@ namespace UnitTestMoodAnalyser
             }
             catch (MoodAnalysisException exception)
             {
-<<<<<<< HEAD
+
                 Assert.AreEqual("Mood should not be null", e.Message);
 =======
 namespace UnitTestMoodAnalyser

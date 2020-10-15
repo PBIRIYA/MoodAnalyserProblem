@@ -14,11 +14,11 @@ namespace MoodAnalyserProblem
             EMPTY,
             OTHERS
         }
-        public MoodAnalyser()
+        public MoodAnalyzer()
         {
             mood = "";
         }
-        public MoodAnalyser(string message)
+        public MoodAnalyzer(string message)
         {
             this.message = message;
         }

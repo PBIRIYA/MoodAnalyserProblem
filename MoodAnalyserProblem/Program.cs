@@ -1,5 +1,6 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
+
 namespace MoodAnalyserProblem
 {
     public class Program
@@ -7,6 +8,7 @@ namespace MoodAnalyserProblem
         static void Main(string[] args)
         {
             Console.WriteLine("Welcome to Mood Analyser Program");
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
             MoodAnalyser analyser = new MoodAnalyser();
@@ -18,6 +20,9 @@ namespace MoodAnalyserProblem
 >>>>>>> UC1_CreateAbility
 =======
 >>>>>>> UC2_HandleNullException
+=======
+           
+>>>>>>> UC3_CustomException
         }
     }
 }

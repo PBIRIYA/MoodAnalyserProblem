@@ -1,31 +1,44 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-
+using System.Text.RegularExpressions;
 namespace MoodAnalyserProblem
 {
+<<<<<<< HEAD
 <<<<<<< HEAD
     public class MoodAnalyzerCustomerException : Exception
     {
 <<<<<<< HEAD
         public enum ExceptionType
+=======
+    public class MoodAnalyzer
+    {
+        string mood;
+        string message;
+        enum Errors
+>>>>>>> UC3_CustomException
         {
-            Null_message, Empty_message
+            NULL,
+            EMPTY,
+            OTHERS
         }
-        private readonly ExceptionType type;
-
-
-        public MoodAnalyzerCustomerException(ExceptionType Type, string message) : base(message)
+        public MoodAnalyzer()
         {
-            this.type = Type;
+            mood = "";
         }
-
-        public MoodAnalyzerCustomerException(object message)
+        public MoodAnalyzer(string message)
         {
+            this.message = message;
         }
-
         public string AnalyseMood()
         {
+            string regexStr = "^(.*[ ])*[sSaAdD]{3}([ ].*)*";
+            Regex regexExp = new Regex(regexStr);
+
+            if (message == null)
+                throw new MoodAnalysisException(Errors.NULL.ToString());
+            else if (message.Length == 0)
+                throw new MoodAnalysisException(Errors.EMPTY.ToString());
             try
 =======
         private string message;
@@ -38,26 +51,13 @@ namespace MoodAnalyserProblem
             if (this.message.Contains("Sad"))
 >>>>>>> UC1_CreateAbility
             {
-                if (this.Message.Equals(string.Empty))
-                {
-                    throw new MoodAnalyzerCustomerException(MoodAnalyzerCustomerException.ExceptionType.Empty_message, "mood is empty");
-                }
-
-
-                if (this.Message.Contains("Sad"))
-                {
-                    return "SAD";
-                }
-                else
-                {
-                    return "HAPPY";
-                }
-
+                mood = regexExp.IsMatch(this.message) ? "SAD" : "HAPPY";
             }
-            catch (NullReferenceException)
+            catch (MoodAnalysisException e)
             {
-                throw new MoodAnalyzerCustomerException(MoodAnalyzerCustomerException.ExceptionType.Null_message, "mood is invalid");
+                throw new MoodAnalysisException(Errors.OTHERS.ToString() + " " + e.Message);
             }
+<<<<<<< HEAD
 
 =======
     public class MoodAnalyser
@@ -86,6 +86,9 @@ namespace MoodAnalyserProblem
             }
             return mood;
 >>>>>>> UC2_HandleNullException
+=======
+            return mood;
+>>>>>>> UC3_CustomException
         }
     }
 }

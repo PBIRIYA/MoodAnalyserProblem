@@ -4,6 +4,7 @@ using System.Text;
 
 namespace MoodAnalyserProblem
 {
+<<<<<<< HEAD
     public class MoodAnalyzerCustomerException : Exception
     {
 <<<<<<< HEAD
@@ -58,6 +59,33 @@ namespace MoodAnalyserProblem
                 throw new MoodAnalyzerCustomerException(MoodAnalyzerCustomerException.ExceptionType.Null_message, "mood is invalid");
             }
 
+=======
+    public class MoodAnalyser
+    {
+        string mood;
+        string message;
+        public MoodAnalyser()
+        {
+            mood = "";
+        }
+        public MoodAnalyser(string message)
+        {
+            this.message = message;
+        }
+        public string AnalyseMood()
+        {
+            string regexStr = "^(.*[ ])*[sSaAdD]{3}([ ].*)*";
+            Regex regexExp = new Regex(regexStr);
+            try
+            {
+                mood = regexExp.IsMatch(this.message) ? "SAD" : "HAPPY";
+            }
+            catch (Exception ex)
+            {
+                return "HAPPY";
+            }
+            return mood;
+>>>>>>> UC2_HandleNullException
         }
     }
 }

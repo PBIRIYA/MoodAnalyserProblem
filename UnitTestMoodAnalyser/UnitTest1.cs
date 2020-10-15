@@ -1,13 +1,20 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+<<<<<<< HEAD
 using MoodAnalyserProblem;
 <<<<<<< HEAD
 
 
 namespace UnitTestProject1
+=======
+using System;
+using MoodAnalyserProblem;
+namespace UnitTestMoodAnalyser
+>>>>>>> UC2_HandleNullException
 {
     [TestClass]
     public class MoodAnalyser
     {
+<<<<<<< HEAD
         [TestMethod]
         public void GivenMood_ReturnSad()
         {
@@ -17,9 +24,14 @@ namespace UnitTestProject1
             string mood = moodAnalyser.AnalyseMood();
             Assert.AreEqual(expected, mood);
 
+=======
+        public MoodAnalyser(string msg)
+        {
+>>>>>>> UC2_HandleNullException
         }
 
         [TestMethod]
+<<<<<<< HEAD
         public void GivenMood_ReturnHappy()
         {
 
@@ -100,4 +112,31 @@ namespace UnitTestMoodAnalyser
 >>>>>>> UC1_CreateAbility
             }
         }
+=======
+        public void AnalyzeSadMood()
+        {
+            //Arrange
+            string msg = "I am in Sad Mood";
+            MoodAnalyser moodAnalyser = new MoodAnalyser(msg);
+            string expectedMood = "SAD";
+            //Act
+            string actualMood = moodAnalyser.AnalyseMood();
+            //Assert
+            Assert.AreEqual(expectedMood, actualMood);
+        }
+
+        [TestMethod]
+        public void AnalyzeHappyMood()
+        {
+            //Arrange
+            string msg = "I am in Any Mood";
+            MoodAnalyser moodAnalyser = new MoodAnalyser(msg);
+            string expectedMood = "HAPPY";
+            //Act
+            string actualMood = moodAnalyser.AnalyseMood();
+            //Assert
+            Assert.AreEqual(expectedMood, actualMood);
+        }
+    }
+>>>>>>> UC2_HandleNullException
 }

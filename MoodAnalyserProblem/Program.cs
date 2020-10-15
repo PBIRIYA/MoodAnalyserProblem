@@ -8,6 +8,7 @@ namespace MoodAnalyserProblem
         {
             Console.WriteLine("Welcome to Mood Analyser Program");
 <<<<<<< HEAD
+<<<<<<< HEAD
             MoodAnalyser analyser = new MoodAnalyser();
             Console.WriteLine("your current mood : ");
             string message = Console.ReadLine();
@@ -15,6 +16,8 @@ namespace MoodAnalyserProblem
             Console.WriteLine(mood);
 =======
 >>>>>>> UC1_CreateAbility
+=======
+>>>>>>> UC2_HandleNullException
         }
     }
 }

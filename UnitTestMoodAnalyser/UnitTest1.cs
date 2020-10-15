@@ -16,6 +16,7 @@ namespace UnitTestMoodAnalyser
 >>>>>>> UC3_CustomException
 {
     [TestClass]
+<<<<<<< HEAD
     public class TestMoodAnalyser
     {
 <<<<<<< HEAD
@@ -72,6 +73,10 @@ namespace UnitTestMoodAnalyser
             Assert.ThrowsException<MoodAnalysisException>(() => moodAnalyser.AnalyseMood());
         }
 
+=======
+    public class UnitTestMoodAnalyser
+    {
+>>>>>>> UC2_HandleNullException
         [TestMethod]
         public void AnalyzeNullExceptionMessage()
         {

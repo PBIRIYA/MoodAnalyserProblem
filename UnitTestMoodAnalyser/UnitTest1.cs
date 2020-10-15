@@ -1,6 +1,5 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using MoodAnalyserProblem;
-
 namespace UnitTestMoodAnalyser
 {
     [TestClass]
@@ -13,10 +12,8 @@ namespace UnitTestMoodAnalyser
             string msg = "I am in Sad Mood";
             MoodAnalyzer moodAnalyser = new MoodAnalyzer(msg);
             string expectedMood = "SAD";
-
             //Act
             string actualMood = moodAnalyser.AnalyseMood();
-
             //Assert
             Assert.AreEqual(expectedMood, actualMood);
         }
@@ -28,10 +25,8 @@ namespace UnitTestMoodAnalyser
             string msg = "I am in Any Mood";
             MoodAnalyzer moodAnalyser = new MoodAnalyzer(msg);
             string expectedMood = "HAPPY";
-
             //Act
             string actualMood = moodAnalyser.AnalyseMood();
-
             //Assert
             Assert.AreEqual(expectedMood, actualMood);
         }
@@ -42,7 +37,6 @@ namespace UnitTestMoodAnalyser
             //Arrange
             string msg = null;
             MoodAnalyzer moodAnalyser = new MoodAnalyzer(msg);
-
             //Act => Assert
             Assert.ThrowsException<MoodAnalysisException>(() => moodAnalyser.AnalyseMood());
         }
@@ -55,7 +49,6 @@ namespace UnitTestMoodAnalyser
             MoodAnalyzer moodAnalyser = new MoodAnalyzer(msg);
             string expectedMsg = "NULL";
             string actualMsg = "";
-
             //Act
             try
             {
@@ -65,7 +58,6 @@ namespace UnitTestMoodAnalyser
             {
                 actualMsg = exception.Message;
             }
-
             //Assert
             Assert.AreEqual(expectedMsg, actualMsg);
         }
@@ -97,7 +89,6 @@ namespace UnitTestMoodAnalyser
             {
                 actualMsg = exception.Message;
             }
-            //Assert
             Assert.AreEqual(expectedMsg, actualMsg);
         }
     }

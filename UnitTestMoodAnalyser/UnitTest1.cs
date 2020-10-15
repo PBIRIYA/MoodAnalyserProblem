@@ -1,78 +1,68 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using MoodAnalyserProblem;
 using System;
-
+using System.Collections.Generic;
+using System.Text;
+using System.Text.RegularExpressions;
 namespace UnitTestProject1
 {
     [TestClass]
     public class MoodAnalyser
     {
-        public MoodAnalyser(string message)
+        [TestMethod]
+        public void AnalyzeSadMood()
         {
+            //Arrange
+            string msg = "I am in Sad Mood";
+            MoodAnalyser moodAnalyser = new MoodAnalyser(msg);
+            string expectedMood = "SAD";
+            //Act
+            string actualMood = moodAnalyser.AnalyseMood();
+            //Assert
+            Assert.AreEqual(expectedMood, actualMood);
         }
 
         [TestMethod]
-        public void GivenMood_ReturnSad()
+        public void AnalyzeHappyMood()
         {
-            string expected = "SAD";
-            string message = "I am Sad now";
-            MoodAnalyser moodAnalyser = new MoodAnalyser(message);
-            string mood = moodAnalyser.AnalyseMood();
-            Assert.AreEqual(expected, mood);
-
+            //Arrange
+            string msg = "I am in Any Mood";
+            MoodAnalyser moodAnalyser = new MoodAnalyser(msg);
+            string expectedMood = "HAPPY";
+            //Act
+            string actualMood = moodAnalyser.AnalyseMood();
+            //Assert
+            Assert.AreEqual(expectedMood, actualMood);
+        }
+        [TestMethod]
+        public void AnalyzeNullExceptionHandling()
+        {
+            //Arrange
+            string msg = null;
+            MoodAnalyser moodAnalyser = new MoodAnalyser(msg);
+            //Act => Assert
+            Assert.ThrowsException<MoodAnalysisException>(() => moodAnalyser.AnalyseMood());
         }
 
         [TestMethod]
-        public void GivenMood_ReturnHappy()
+        public void AnalyzeNullExceptionMessage()
         {
-
-            string expected = "HAPPY";
-            string message = "I am in any mood";
-            MoodAnalyser moodAnalyser = new MoodAnalyser(message);
-            string mood = moodAnalyser.AnalyseMood();
-            Assert.AreEqual(expected, mood);
-
-
-        }
-
-        private string AnalyseMood()
-        {
-            throw new NotImplementedException();
-        }
-    }
-    [TestClass]
-    public class UnitTest2
-    {
-        [TestMethod]
-        public void Given_ShouldThrowEmptyValue()
-        {
+            //Arrange
+            string msg = null;
+            MoodAnalyser moodAnalyser = new MoodAnalyser(msg);
+            string expectedMsg = "NULL";
+            string actualMsg = "";
+            //Act
             try
             {
-                string message = "";
-                MoodAnalyzerCustomerException moodAnalyzer = new MoodAnalyzerCustomerException(message);
-                string mood = moodAnalyzer.AnalyseMood();
-
-
+                actualMsg = moodAnalyser.AnalyseMood();
             }
-            catch (MoodAnalyzerCustomerException e)
+            catch (MoodAnalysisException exception)
             {
-                Assert.AreEqual("Mood should not be empty", e.Message);
+                actualMsg = exception.Message;
             }
-
-        }
-        [TestMethod]
-        public void Given_NULL_Mood_Should_Throw_MoodAnalysisException()
-        {
-            try
-            {
-                string message = null;
-                MoodAnalyzerCustomerException moodAnalyse = new MoodAnalyzerCustomerException(message);
-                string mood = moodAnalyse.AnalyseMood();
-            }
-            catch (MoodAnalyzerCustomerException e)
-            {
-                Assert.AreEqual("Mood should not be null", e.Message);
-            }
+            //Assert
+            Assert.AreEqual(expectedMsg, actualMsg);
         }
     }
 }

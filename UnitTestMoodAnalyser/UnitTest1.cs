@@ -4,11 +4,8 @@ using MoodAnalyserProblem;
 namespace UnitTestMoodAnalyser
 {
     [TestClass]
-    public class MoodAnalyser
+    public class UnitTestMoodAnalyser
     {
-        public MoodAnalyser(string msg)
-        {
-        }
         [TestMethod]
         public void AnalyzeSadMood()
         {

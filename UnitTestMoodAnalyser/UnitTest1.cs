@@ -1,16 +1,17 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System;
 using MoodAnalyserProblem;
 namespace UnitTestMoodAnalyser
 {
     [TestClass]
-    public class TestMoodAnalyser
+    public class UnitTestMoodAnalyser
     {
         [TestMethod]
         public void AnalyzeSadMood()
         {
             //Arrange
             string msg = "I am in Sad Mood";
-            MoodAnalyzer moodAnalyser = new MoodAnalyzer(msg);
+            MoodAnalyser moodAnalyser = new MoodAnalyser(msg);
             string expectedMood = "SAD";
             //Act
             string actualMood = moodAnalyser.AnalyseMood();
@@ -23,7 +24,7 @@ namespace UnitTestMoodAnalyser
         {
             //Arrange
             string msg = "I am in Any Mood";
-            MoodAnalyzer moodAnalyser = new MoodAnalyzer(msg);
+            MoodAnalyser moodAnalyser = new MoodAnalyser(msg);
             string expectedMood = "HAPPY";
             //Act
             string actualMood = moodAnalyser.AnalyseMood();
@@ -36,9 +37,9 @@ namespace UnitTestMoodAnalyser
         {
             //Arrange
             string msg = null;
-            MoodAnalyzer moodAnalyser = new MoodAnalyzer(msg);
+            MoodAnalyser moodAnalyser = new MoodAnalyser(msg);
             //Act => Assert
-            Assert.ThrowsException<MoodAnalysisException>(() => moodAnalyser.AnalyseMood());
+            Assert.ThrowsException<MoodAnalyserCustomException>(() => moodAnalyser.AnalyseMood());
         }
 
         [TestMethod]
@@ -46,7 +47,7 @@ namespace UnitTestMoodAnalyser
         {
             //Arrange
             string msg = null;
-            MoodAnalyzer moodAnalyser = new MoodAnalyzer(msg);
+            MoodAnalyser moodAnalyser = new MoodAnalyser(msg);
             string expectedMsg = "NULL";
             string actualMsg = "";
             //Act
@@ -54,22 +55,22 @@ namespace UnitTestMoodAnalyser
             {
                 actualMsg = moodAnalyser.AnalyseMood();
             }
-            catch (MoodAnalysisException exception)
+            catch (MoodAnalyserCustomException exception)
             {
                 actualMsg = exception.Message;
             }
             //Assert
             Assert.AreEqual(expectedMsg, actualMsg);
         }
+
         [TestMethod]
         public void AnalyzeEmptyExceptionHandling()
         {
             //Arrange
             string msg = "";
-            MoodAnalyzer moodAnalyser = new MoodAnalyzer(msg);
-
+            MoodAnalyser moodAnalyser = new MoodAnalyser(msg);
             //Act => Assert
-            Assert.ThrowsException<MoodAnalysisException>(() => moodAnalyser.AnalyseMood());
+            Assert.ThrowsException<MoodAnalyserCustomException>(() => moodAnalyser.AnalyseMood());
         }
 
         [TestMethod]
@@ -77,7 +78,7 @@ namespace UnitTestMoodAnalyser
         {
             //Arrange
             string msg = "";
-            MoodAnalyzer moodAnalyser = new MoodAnalyzer(msg);
+            MoodAnalyser moodAnalyser = new MoodAnalyser(msg);
             string expectedMsg = "EMPTY";
             string actualMsg = "";
             //Act
@@ -85,10 +86,11 @@ namespace UnitTestMoodAnalyser
             {
                 actualMsg = moodAnalyser.AnalyseMood();
             }
-            catch (MoodAnalysisException exception)
+            catch (MoodAnalyserCustomException exception)
             {
                 actualMsg = exception.Message;
             }
+            //Assert
             Assert.AreEqual(expectedMsg, actualMsg);
         }
     }

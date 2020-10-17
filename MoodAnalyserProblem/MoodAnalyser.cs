@@ -6,6 +6,7 @@ namespace MoodAnalyserProblem
 {
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     public class MoodAnalyzerCustomerException : Exception
     {
 <<<<<<< HEAD
@@ -61,34 +62,49 @@ namespace MoodAnalyserProblem
 
 =======
     public class MoodAnalyser
+=======
+    public class MoodAnalyser : Exception
+>>>>>>> UC2_HandleNullException
     {
-        string mood;
-        string message;
-        public MoodAnalyser()
+        string msg;
+        public string analyseMood()
         {
-            mood = "";
-        }
-        public MoodAnalyser(string message)
-        {
-            this.message = message;
-        }
-        public string AnalyseMood()
-        {
-            string regexStr = "^(.*[ ])*[sSaAdD]{3}([ ].*)*";
-            Regex regexExp = new Regex(regexStr);
-            try
+            if (msg == "I am in Sad Mood")
             {
-                mood = regexExp.IsMatch(this.message) ? "SAD" : "HAPPY";
+                return "SAD";
             }
-            catch (Exception ex)
+            else
             {
                 return "HAPPY";
             }
+        }
+        string pattern = "(^.*Sad.*$)|(^.*sad.*$)|(^.*SAD.*$)";
+        public string AnalyseMood(string message)
+        {
+            if (message != null)
+            {
+                bool match = Regex.IsMatch(message, pattern);
+                if (match)
+                {
+                    return "SAD";
+                }
+                else
+                {
+                    return "HAPPY";
+                }
+            }
+            else
+            {
+                return "Value cannot be null";
+            }
+<<<<<<< HEAD
             return mood;
 >>>>>>> UC2_HandleNullException
 =======
             return mood;
 >>>>>>> UC3_CustomException
+=======
+>>>>>>> UC2_HandleNullException
         }
     }
 }

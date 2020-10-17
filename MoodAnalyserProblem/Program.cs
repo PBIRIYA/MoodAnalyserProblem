@@ -11,11 +11,15 @@ namespace MoodAnalyserProblem
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> UC2_HandleNullException
             MoodAnalyser analyser = new MoodAnalyser();
             Console.WriteLine("your current mood : ");
             string message = Console.ReadLine();
             string mood = analyser.AnalyseMood(message);
             Console.WriteLine(mood);
+<<<<<<< HEAD
 =======
 >>>>>>> UC1_CreateAbility
 =======
@@ -23,6 +27,8 @@ namespace MoodAnalyserProblem
 =======
            
 >>>>>>> UC3_CustomException
+=======
+>>>>>>> UC2_HandleNullException
         }
     }
 }

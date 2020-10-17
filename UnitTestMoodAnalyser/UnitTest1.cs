@@ -7,29 +7,40 @@ namespace UnitTestMoodAnalyser
     public class UnitTestMoodAnalyser
     {
         [TestMethod]
-        public void AnalyzeSadMood()
+        public void when_pass_I_am_Sad_should_return_Sad()
         {
-            //Arrange
-            string msg = "I am in Sad Mood";
-            MoodAnalyser moodAnalyser = new MoodAnalyser(msg);
-            string expectedMood = "SAD";
+            //Arrage
+            MoodAnalyser analyser = new MoodAnalyser();
             //Act
-            string actualMood = moodAnalyser.AnalyseMood();
+            string result1 = analyser.AnalyseMood("I am in Sad Mood");
             //Assert
-            Assert.AreEqual(expectedMood, actualMood);
+            Assert.AreEqual("SAD", result1);
         }
 
         [TestMethod]
-        public void AnalyzeHappyMood()
+        public void when_pass_I_am_Happy_should_return_happy()
         {
-            //Arrange
-            string msg = "I am in Any Mood";
-            MoodAnalyser moodAnalyser = new MoodAnalyser(msg);
-            string expectedMood = "HAPPY";
+            //Arrage
+            MoodAnalyser analyser = new MoodAnalyser();
             //Act
-            string actualMood = moodAnalyser.AnalyseMood();
+            string result2 = analyser.AnalyseMood("I am in Any Mood");
             //Assert
-            Assert.AreEqual(expectedMood, actualMood);
+            Assert.AreEqual("HAPPY", result2);
+        }
+
+        [TestMethod]
+        public void Given_NULL_Mood_Should_Throw_NullException()
+        {
+            try
+            {
+                string msg = null;
+                MoodAnalyser analyser = new MoodAnalyser();
+                string mood = analyser.AnalyseMood(msg);
+            }
+            catch (Exception e)
+            {
+                Assert.AreEqual("Value cannot be null", e.Message);
+            }
         }
     }
 }

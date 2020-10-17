@@ -4,10 +4,10 @@ using System.Text;
 
 namespace MoodAnalyserProblem
 {
-    public class MoodAnalysisException : Exception
+    public class MoodAnalyserCustomException : Exception
     {
         string _message;
-        public MoodAnalysisException(string message) : base(message)
+        public MoodAnalyserCustomException(string message) : base(message)
         {
             this._message = message;
         }

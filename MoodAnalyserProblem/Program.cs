@@ -12,6 +12,7 @@ namespace MoodAnalyserProblem
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> UC2_HandleNullException
             MoodAnalyser analyser = new MoodAnalyser();
@@ -29,6 +30,8 @@ namespace MoodAnalyserProblem
 >>>>>>> UC3_CustomException
 =======
 >>>>>>> UC2_HandleNullException
+=======
+>>>>>>> UC3_CustomException
         }
     }
 }

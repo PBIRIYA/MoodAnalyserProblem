@@ -93,5 +93,17 @@ namespace UnitTestMoodAnalyser
             //Assert
             Assert.AreEqual(expectedMsg, actualMsg);
         }
+
+        [TestMethod]
+        public void MoodAnalysisBuilder_ShouldReturnMoodAnalysisObject()
+        {
+            //Arrange
+            string className = "MoodAnalyser";
+            object expectedInstance = new MoodAnalyser();
+            //Add
+            object actualInstance = MoodAnalyserBuilder.BuildMoodAnalysis(className);
+            //Assert
+            expectedInstance.Equals(actualInstance);
+        }
     }
 }

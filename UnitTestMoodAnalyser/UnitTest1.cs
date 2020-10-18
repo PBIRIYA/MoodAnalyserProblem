@@ -31,5 +31,67 @@ namespace UnitTestMoodAnalyser
             //Assert
             Assert.AreEqual(expectedMood, actualMood);
         }
+
+        [TestMethod]
+        public void AnalyzeNullExceptionHandling()
+        {
+            //Arrange
+            string msg = null;
+            MoodAnalyser moodAnalyser = new MoodAnalyser(msg);
+            //Act => Assert
+            Assert.ThrowsException<MoodException>(() => moodAnalyser.AnalyseMood());
+        }
+
+        [TestMethod]
+        public void AnalyzeNullExceptionMessage()
+        {
+            //Arrange
+            string msg = null;
+            MoodAnalyser moodAnalyser = new MoodAnalyser(msg);
+            string expectedMsg = "NULL";
+            string actualMsg = "";
+            //Act
+            try
+            {
+                actualMsg = moodAnalyser.AnalyseMood();
+            }
+            catch (MoodException exception)
+            {
+                actualMsg = exception.Message;
+            }
+            //Assert
+            Assert.AreEqual(expectedMsg, actualMsg);
+        }
+
+        [TestMethod]
+        public void AnalyzeEmptyExceptionHandling()
+        {
+            //Arrange
+            string msg = "";
+            MoodAnalyser moodAnalyser = new MoodAnalyser(msg);
+            //Act => Assert
+            Assert.ThrowsException<MoodException>(() => moodAnalyser.AnalyseMood());
+        }
+
+        [TestMethod]
+        public void AnalyzeEmptyExceptionMessage()
+        {
+            //Arrange
+            string msg = "";
+            MoodAnalyser moodAnalyser = new MoodAnalyser(msg);
+            string expectedMsg = "EMPTY";
+            string actualMsg = "";
+            //Act
+            try
+            {
+                actualMsg = moodAnalyser.AnalyseMood();
+            }
+            catch (MoodException exception)
+            {
+                actualMsg = exception.Message;
+            }
+            //Assert
+            Assert.AreEqual(expectedMsg, actualMsg);
+        }
     }
 }

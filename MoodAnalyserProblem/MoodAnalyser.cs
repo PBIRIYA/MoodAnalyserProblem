@@ -10,6 +10,12 @@ namespace MoodAnalyserProblem
     {
         string mood;
         string message;
+        enum Errors
+        {
+            NULL,
+            EMPTY,
+            OTHERS
+        }
         public MoodAnalyser()
         {
             mood = "";
@@ -22,13 +28,17 @@ namespace MoodAnalyserProblem
         {
             string regexStr = "^(.*[ ])*[sSaAdD]{3}([ ].*)*";
             Regex regexExp = new Regex(regexStr);
+            if (message == null)
+                throw new MoodException(Errors.NULL.ToString());
+            else if (message.Length == 0)
+                throw new MoodException(Errors.EMPTY.ToString());
             try
             {
                 mood = regexExp.IsMatch(this.message) ? "SAD" : "HAPPY";
             }
-            catch (Exception ex)
+            catch (MoodAnalyserCustomException e)
             {
-                return "HAPPY";
+                throw new MoodException(Errors.OTHERS.ToString() + " " + e.Message);
             }
             return mood;
         }

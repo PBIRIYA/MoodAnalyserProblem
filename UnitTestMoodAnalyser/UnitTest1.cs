@@ -224,7 +224,6 @@ namespace UnitTestMoodAnalyser
             {
                 actual = e.Message;
             }
-
             //Assert
             Assert.AreEqual(expected, actual);
         }

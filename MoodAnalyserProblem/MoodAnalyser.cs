@@ -8,34 +8,29 @@ namespace MoodAnalyserProblem
 {
     public class MoodAnalyser
     {
-        string _mood;
-        string _message;
+        string mood;
+        string message;
         public MoodAnalyser()
         {
-            _mood = "";
+            mood = "";
         }
         public MoodAnalyser(string message)
         {
-            this._message = message;
+            this.message = message;
         }
         public string AnalyseMood()
         {
+            string regexStr = "^(.*[ ])*[sSaAdD]{3}([ ].*)*";
+            Regex regexExp = new Regex(regexStr);
             try
             {
-                if (this._message.Equals(string.Empty))
-                {
-                    throw new MoodAnalyserCustomException(MoodAnalyserCustomException.ExceptionType.EMPTY_MESSAGE, "Mood should not be empty");
-                }
-
-                if (this._message.ToLower().Contains("sad"))
-                    return "SAD";
-                else
-                    return "HAPPY";
+                mood = regexExp.IsMatch(this.message) ? "SAD" : "HAPPY";
             }
-            catch (NullReferenceException)
+            catch (Exception ex)
             {
-                throw new MoodAnalyserCustomException(MoodAnalyserCustomException.ExceptionType.NULL_MESSAGE, "Mood should not be null");
+                return "HAPPY";
             }
+            return mood;
         }
     }
 }
